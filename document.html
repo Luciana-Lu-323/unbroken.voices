@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>申訴文件產生器 — Unbroken Voices</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,600;1,9..144,300&family=DM+Sans:wght@400;500&family=Noto+Serif+TC:wght@300;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css"></head>
+<body>
+<nav class="nav">
+  <a href="index.html" class="nav-logo">Unbroken Voices</a>
+  <div class="nav-links">
+    <a href="document.html" data-zh="文件產生器" data-en="Document Builder">文件產生器</a>
+    <a href="process.html" data-zh="提交後流程" data-en="After Submission">提交後流程</a>
+    <a href="support.html" data-zh="支援資源" data-en="Support Resources">支援資源</a>
+    <a href="evidence.html" data-zh="蒐證指南" data-en="Evidence Guide">蒐證指南</a>
+    <button class="lang-toggle" id="langToggle">EN</button>
+  </div>
+</nav>
+<div class="page-header">
+  <a href="index.html" class="back-link">← <span data-zh="返回首頁" data-en="Back">返回首頁</span></a>
+  <h1 data-zh="申訴文件產生器" data-en="Document Builder">申訴文件產生器</h1>
+  <p class="page-sub" data-zh="填寫以下表格，系統將自動產出申訴書。所有資料僅在你的裝置上處理，不會上傳至任何伺服器。" data-en="Fill in the form — a complaint document will be generated locally on your device. Nothing is uploaded.">填寫以下表格，系統將自動產出申訴書。所有資料僅在你的裝置上處理。</p>
+</div>
+<div class="page-content">
+<div class="doc-form">
+  <span class="form-section-label" data-zh="第一步：填寫身份" data-en="Step 1: Who is filling this?">第一步：填寫身份</span>
+  <div class="form-group">
+    <label data-zh="填寫者身份" data-en="Filer">填寫者身份</label>
+    <select id="filerRole">
+      <option value="student" data-zh="學生本人" data-en="Student (self)">學生本人</option>
+      <option value="parent" data-zh="家長代填" data-en="Parent / Guardian">家長代填</option>
+    </select>
+  </div>
+  <div class="form-row">
+    <div class="form-group"><label data-zh="受霸凌學生姓名" data-en="Victim's name">受霸凌學生姓名</label><input type="text" id="victimName" placeholder="王小明"></div>
+    <div class="form-group"><label data-zh="就讀學校" data-en="School">就讀學校</label><input type="text" id="schoolName" placeholder="○○國中"></div>
+  </div>
+  <div class="form-row">
+    <div class="form-group"><label data-zh="年級／班級" data-en="Grade / Class">年級／班級</label><input type="text" id="gradeClass" placeholder="七年甲班"></div>
+    <div class="form-group"><label data-zh="文件日期" data-en="Date">文件日期</label><input type="date" id="docDate"></div>
+  </div>
+  <div id="parentBlock" style="display:none">
+    <hr class="form-divider">
+    <div class="form-row">
+      <div class="form-group"><label data-zh="家長姓名" data-en="Parent name">家長姓名</label><input type="text" id="parentName" placeholder="王大明"></div>
+      <div class="form-group"><label data-zh="聯絡電話" data-en="Phone">聯絡電話</label><input type="tel" id="parentPhone" placeholder="09xx-xxx-xxx"></div>
+    </div>
+  </div>
+</div>
+<div class="doc-form">
+  <span class="form-section-label" data-zh="第二步：事件描述" data-en="Step 2: Incident Details">第二步：事件描述</span>
+  <div class="form-row">
+    <div class="form-group"><label data-zh="事件發生日期" data-en="First incident date">事件發生日期</label><input type="date" id="incidentDate"></div>
+    <div class="form-group"><label data-zh="發生地點" data-en="Location">發生地點</label><input type="text" id="incidentLocation" placeholder="如：教室、走廊、Line群組"></div>
+  </div>
+  <div class="form-group">
+    <label data-zh="霸凌類型（可複選）" data-en="Type of bullying">霸凌類型</label>
+    <div style="display:flex;flex-wrap:wrap;gap:0.5rem 1.5rem;margin-top:0.5rem;">
+      <label style="font-weight:400;font-size:0.9rem"><input type="checkbox" value="physical"> <span data-zh="肢體" data-en="Physical">肢體</span></label>
+      <label style="font-weight:400;font-size:0.9rem"><input type="checkbox" value="verbal"> <span data-zh="言語" data-en="Verbal">言語</span></label>
+      <label style="font-weight:400;font-size:0.9rem"><input type="checkbox" value="social"> <span data-zh="關係／排擠" data-en="Social / Exclusion">關係／排擠</span></label>
+      <label style="font-weight:400;font-size:0.9rem"><input type="checkbox" value="cyber"> <span data-zh="網路／社群" data-en="Cyberbullying">網路／社群</span></label>
+      <label style="font-weight:400;font-size:0.9rem"><input type="checkbox" value="sexual"> <span data-zh="性騷擾" data-en="Sexual harassment">性騷擾</span></label>
+    </div>
+  </div>
+  <div class="form-group">
+    <label data-zh="事件詳細描述" data-en="Detailed description">事件詳細描述</label>
+    <textarea id="incidentDesc" placeholder="例：2025年3月5日下午1點，在七甲教室，○○對我說……"></textarea>
+    <p class="form-hint" data-zh="越具體越好。用第一人稱，寫實際發生的事。" data-en="Be specific. First person, describe what happened.">越具體越好。用第一人稱，寫實際發生的事。</p>
+  </div>
+  <div class="form-group"><label data-zh="是否為持續性霸凌？約發生幾次？" data-en="Is this ongoing? How many times?">持續性／次數</label><input type="text" id="frequency" placeholder="約每週2至3次，持續2個月"></div>
+  <div class="form-group"><label data-zh="目擊者" data-en="Witnesses">目擊者</label><input type="text" id="witnesses" placeholder="同班同學○○、○○（可選填）"></div>
+</div>
+<div class="doc-form">
+  <span class="form-section-label" data-zh="第三步：霸凌者資訊" data-en="Step 3: Perpetrator">第三步：霸凌者資訊</span>
+  <div class="warn-box" data-zh="⚠️ 不確定姓名可寫綽號或班級描述，不要留空也不要亂填。" data-en="⚠️ If unsure of name, use a nickname or description. Never leave blank or guess.">⚠️ 不確定姓名可寫綽號或班級描述。</div>
+  <div class="form-row">
+    <div class="form-group"><label data-zh="霸凌者姓名／描述" data-en="Perpetrator name / description">霸凌者姓名／描述</label><input type="text" id="perpetratorName" placeholder="○○（七乙班）"></div>
+    <div class="form-group"><label data-zh="與受害者關係" data-en="Relationship">與受害者關係</label><input type="text" id="relationship" placeholder="同班同學、學長姐等"></div>
+  </div>
+</div>
+<div class="doc-form">
+  <span class="form-section-label" data-zh="第四步：過去的處理記錄" data-en="Step 4: Prior Actions">第四步：過去的處理記錄</span>
+  <div class="form-group"><label data-zh="是否曾告知老師／學校？結果如何？" data-en="Previously reported? What happened?">是否曾告知老師／學校？</label><textarea id="priorReport" placeholder="例：曾於2025年3月告知班導師，但未有後續。" style="min-height:80px"></textarea></div>
+  <div class="form-group"><label data-zh="現有證據描述" data-en="Existing evidence">現有證據描述</label><textarea id="existingEvidence" placeholder="例：手機截圖3張（Line對話）、照片1張（瘀青）" style="min-height:80px"></textarea></div>
+  <div class="form-group"><label data-zh="期望學校採取的具體行動" data-en="Requested actions">期望學校採取的具體行動</label><textarea id="requestedAction" placeholder="例：請求學校依《校園霸凌防制準則》啟動調查程序，並提供雙方輔導資源。" style="min-height:80px"></textarea></div>
+</div>
+<button class="btn-generate" onclick="generateDoc()">
+  <span data-zh="📄 產出申訴文件" data-en="📄 Generate Document">📄 產出申訴文件</span>
+</button>
+<div id="outputSection" style="display:none;margin-top:2.5rem;">
+  <div class="info-card" style="border-color:var(--sage);margin-bottom:1rem;">
+    <h3 data-zh="✅ 文件已產出" data-en="✅ Document Generated">✅ 文件已產出</h3>
+    <p data-zh="請複製以下文字，貼入 Word 或 Google Docs，列印後提交。記住：給學校的只給複本，正本自己留！" data-en="Copy the text below, paste into Word or Google Docs, print and submit. Always keep the original — only give copies!">請複製以下文字，貼入 Word 或 Google Docs 後列印提交。記住：給學校的只給複本！</p>
+  </div>
+  <div id="docOutput" style="background:var(--white);border-radius:var(--radius-lg);padding:2.5rem;font-size:0.92rem;line-height:2;white-space:pre-wrap;border:1.5px solid rgba(26,23,48,0.1);"></div>
+  <button onclick="copyDoc()" style="margin-top:1rem;padding:0.75rem 2rem;background:var(--sage);color:var(--white);border:none;border-radius:100px;font-family:var(--ff-body);font-size:0.9rem;cursor:pointer;" data-zh="複製全文" data-en="Copy All">複製全文</button>
+  <button onclick="window.print()" style="margin-top:1rem;margin-left:0.75rem;padding:0.75rem 2rem;background:var(--night);color:var(--parchment);border:none;border-radius:100px;font-family:var(--ff-body);font-size:0.9rem;cursor:pointer;" data-zh="列印" data-en="Print">列印</button>
+</div>
+</div>
+<footer class="footer"><p data-zh="本工具產出之文件僅供參考，不構成法律建議。" data-en="Documents generated are for reference only. Not legal advice.">本工具產出之文件僅供參考，不構成法律建議。</p><p>© 2025 Unbroken Voices</p></footer>
+<script src="lang.js"></script>
+<script>
+const isZh=()=>(localStorage.getItem('uv-lang')||'zh')==='zh';
+document.getElementById('filerRole').addEventListener('change',function(){document.getElementById('parentBlock').style.display=this.value==='parent'?'':'none';});
+document.getElementById('docDate').value=new Date().toISOString().split('T')[0];
+function getBullyTypes(){const m={physical:'肢體霸凌',verbal:'言語霸凌',social:'關係/排擠霸凌',cyber:'網路/社群霸凌',sexual:'性騷擾'};const e={physical:'Physical bullying',verbal:'Verbal bullying',social:'Social exclusion',cyber:'Cyberbullying',sexual:'Sexual harassment'};return Array.from(document.querySelectorAll('input[type=checkbox]:checked')).map(c=>isZh()?m[c.value]:e[c.value]).join('、')||(isZh()?'未指定':'Not specified');}
+function v(id){return document.getElementById(id)?.value?.trim()||'';}
+function generateDoc(){
+  const zh=isZh(),role=document.getElementById('filerRole').value;
+  const victim=v('victimName')||(zh?'（姓名）':'(Name)');
+  const school=v('schoolName')||(zh?'（學校）':'(School)');
+  const grade=v('gradeClass')||(zh?'（年班）':'(Grade)');
+  const date=v('docDate')||new Date().toISOString().split('T')[0];
+  const iDate=v('incidentDate')||(zh?'（日期）':'(Date)');
+  const loc=v('incidentLocation')||(zh?'（地點）':'(Location)');
+  const desc=v('incidentDesc')||(zh?'（請詳述事件經過）':'(Please describe)');
+  const freq=v('frequency')||(zh?'（次數）':'(Frequency)');
+  const wit=v('witnesses')||(zh?'無已知目擊者':'No known witnesses');
+  const perp=v('perpetratorName')||(zh?'（霸凌者）':'(Perpetrator)');
+  const rel=v('relationship')||(zh?'同學':'classmate');
+  const prior=v('priorReport')||(zh?'無':'None');
+  const evid=v('existingEvidence')||(zh?'詳見附件':'See attached');
+  const req=v('requestedAction')||(zh?'請依法啟動調查程序並提供輔導資源':'Please initiate investigation per regulations');
+  const bt=getBullyTypes();
+  const pLine=role==='parent'?(zh?`家長/監護人：${v('parentName')||'（家長姓名）'}　聯絡電話：${v('parentPhone')||'（電話）'}\n`:`Parent: ${v('parentName')||'(Name)'}  Phone: ${v('parentPhone')||'(Phone)'}\n`):'';
+  const txt=zh?`校園霸凌事件申訴書\n\n受文者：${school} 學務處／輔導室\n日　期：${date}\n\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n一、申訴人基本資料\n\n受霸凌學生：${victim}\n就讀年班：${school} ${grade}\n${pLine}\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n二、事件說明\n\n事件首次發生日期：${iDate}\n發生地點：${loc}\n霸凌類型：${bt}\n涉嫌霸凌者：${perp}（關係：${rel}）\n\n頻率與持續時間：\n${freq}\n\n詳細描述：\n${desc}\n\n目擊者：${wit}\n\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n三、過去處理情形\n\n曾通報：${prior}\n現有證據：${evid}\n\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n四、申訴請求\n\n${req}\n\n本申訴書依《校園霸凌防制準則》提出，謹請學校依法於1個工作日內啟動調查，30個工作日內完成。\n\n申訴人簽名：________________\n日期：${date}`:`CAMPUS BULLYING COMPLAINT\n\nTo: Student Affairs / Counseling Office\nSchool: ${school}\nDate: ${date}\n\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n1. COMPLAINANT\n\nVictim: ${victim}\nGrade: ${grade} at ${school}\n${pLine}\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n2. INCIDENT\n\nFirst incident: ${iDate}\nLocation: ${loc}\nType: ${bt}\nPerpetrator: ${perp} (${rel})\nFrequency: ${freq}\n\nDescription:\n${desc}\n\nWitnesses: ${wit}\n\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n3. PRIOR ACTIONS\n\nPreviously reported: ${prior}\nEvidence: ${evid}\n\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n4. REQUESTED ACTIONS\n\n${req}\n\nSignature: ________________\nDate: ${date}`;
+  document.getElementById('docOutput').textContent=txt;
+  document.getElementById('outputSection').style.display='';
+  document.getElementById('outputSection').scrollIntoView({behavior:'smooth'});
+}
+function copyDoc(){navigator.clipboard.writeText(document.getElementById('docOutput').textContent).then(()=>alert(isZh()?'已複製！':'Copied!'));}
+</script>
+</body></html>
